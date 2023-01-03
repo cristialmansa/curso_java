@@ -47,7 +47,7 @@ class Empleado {
 	
 	public Empleado(String nom) {
 		
-		nombre = nom;
+		this(nom, 30000, 2000, 01, 01);
 		
 	}
 	
