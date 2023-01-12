@@ -1,5 +1,5 @@
 package graficos;
-
+import java.awt.event.*;
 import java.awt.*;
 
 import javax.swing.*;
@@ -35,5 +35,49 @@ class MarcoBotones extends JFrame {
 
 class LaminaBotones extends JPanel {
 	
+	JButton botonAzul = new JButton("Azul");
+
+	JButton botonAmarillo = new JButton("Amarillo");
+
+	JButton botonRojo = new JButton("Rojo");
+
+	public LaminaBotones() {
+			
+			add(botonAzul);
+
+			add(botonAmarillo);
+
+			add(botonRojo);
+
+			ColorFondo Amarillo = new ColorFondo(Color.yellow);
 	
+			ColorFondo Azul = new ColorFondo(Color.blue);
+
+			ColorFondo Rojo = new ColorFondo(Color.red);
+
+			botonAzul.addActionListener(Azul);
+
+			botonRojo.addActionListener(Rojo);
+
+			botonAmarillo.addActionListener(Amarillo);
+	}
+
+	private class ColorFondo implements ActionListener {
+	
+		public ColorFondo(Color c) {
+	
+			colorDeFondo = c;
+		
+		}	
+
+		public void actionPerformed(ActionEvent e) {
+	
+			setBackground(colorDeFondo);
+
+		}
+
+		private Color colorDeFondo;
+
+	}
+
 }
