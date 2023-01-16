@@ -62,18 +62,67 @@ class LaminaProcesador_II_v2 extends JPanel {
 		
 		configura_menu("Cursiva", "estilo", "", Font.ITALIC, 1, "bin/graficos/imagen.png");
 		
+		/*JCheckBoxMenuItem negrita = new JCheckBoxMenuItem("Negrita", 
+				new ImageIcon("bin/graficos/imagen.png"));
+		
+		JCheckBoxMenuItem cursiva = new JCheckBoxMenuItem("Cursiva", 
+				new ImageIcon("bin/graficos/imagen.png"));
+		
+		negrita.addActionListener(new StyledEditorKit.BoldAction());
+		
+		cursiva.addActionListener(new StyledEditorKit.ItalicAction());
+		
+		estilo.add(negrita);
+		
+		estilo.add(cursiva);*/
+		
 		//-----------------------------------------------------------------------
 		
-		configura_menu("12", "tamaño", "", 9, 12, "");
+		/*configura_menu("12", "tamaño", "", 9, 12, "");
 		
 		configura_menu("16", "tamaño", "", 9, 16, "");
 		
 		configura_menu("20", "tamaño", "", 9, 20, "");
 		
-		configura_menu("24", "tamaño", "", 9, 24, "");
+		configura_menu("24", "tamaño", "", 9, 24, "");*/
 		
+		ButtonGroup tamagno_letra = new ButtonGroup();
 		
+		JRadioButtonMenuItem doce = new JRadioButtonMenuItem("12");
 		
+		JRadioButtonMenuItem dieciseis = new JRadioButtonMenuItem("16");
+		
+		JRadioButtonMenuItem veinte = new JRadioButtonMenuItem("20");
+		
+		JRadioButtonMenuItem veinticuatro = new JRadioButtonMenuItem("24");
+		
+		//veinticuatro.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_DOWN_MASK));
+		
+		tamagno_letra.add(doce);
+		
+		tamagno_letra.add(dieciseis);
+		
+		tamagno_letra.add(veinte);
+		
+		tamagno_letra.add(veinticuatro);
+		
+		doce.addActionListener(new StyledEditorKit.FontSizeAction("cambia tamaño", 12));
+		
+		dieciseis.addActionListener(new StyledEditorKit.FontSizeAction("cambia tamaño", 16));
+		
+		veinte.addActionListener(new StyledEditorKit.FontSizeAction("cambia tamaño", 20));
+		
+		veinticuatro.addActionListener(new StyledEditorKit.FontSizeAction("cambia tamaño", 24));
+		
+		tamagno.add(doce);
+		
+		tamagno.add(dieciseis);
+		
+		tamagno.add(veinte);
+		
+		tamagno.add(veinticuatro);
+		
+		//-----------------------------------------------------------------------
 		
 		mibarra.add(fuente);
 		
@@ -89,6 +138,51 @@ class LaminaProcesador_II_v2 extends JPanel {
 		
 		add(miarea, BorderLayout.CENTER);
 		
+		//-----------------------------------------------------------------------
+		
+		
+		JPopupMenu emergente = new JPopupMenu();
+		
+		JMenuItem negritaE = new JMenuItem("Negrita");
+		
+		JMenuItem cursivaE = new JMenuItem("Cursiva");
+		
+		negritaE.addActionListener(new StyledEditorKit.BoldAction());
+		
+		cursivaE.addActionListener(new StyledEditorKit.ItalicAction());
+		
+		
+		emergente.add(negritaE);
+		
+		emergente.add(cursivaE);
+		
+		miarea.setComponentPopupMenu(emergente);
+		
+		//---------------------------------------------------------------------------------------
+		
+		JToolBar barra = new JToolBar();
+		
+		JButton negritaBarra = new JButton(new ImageIcon("bin/graficos/imagen.png"));
+		
+		JButton cursivaBarra = new JButton(new ImageIcon("bin/graficos/imagen.png"));
+		
+		JButton subraBarra = new JButton(new ImageIcon("bin/graficos/imagen.png"));
+		
+		negritaBarra.addActionListener(new StyledEditorKit.BoldAction());
+		
+		cursivaBarra.addActionListener(new StyledEditorKit.ItalicAction());
+		
+		subraBarra.addActionListener(new StyledEditorKit.UnderlineAction());
+		
+		barra.add(negritaBarra);
+		
+		barra.add(cursivaBarra);
+		
+		barra.add(subraBarra);
+		
+		barra.setOrientation(1);
+		
+		add(barra, BorderLayout.WEST);
 		
 	}
 	
@@ -120,9 +214,13 @@ class LaminaProcesador_II_v2 extends JPanel {
 			
 			if (estilos == Font.BOLD) {
 				
+				elem_menu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
+				
 				elem_menu.addActionListener(new StyledEditorKit.BoldAction());
 				
 			} else if (estilos == Font.ITALIC) {
+				
+				elem_menu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K, InputEvent.CTRL_DOWN_MASK));
 				
 				elem_menu.addActionListener(new StyledEditorKit.ItalicAction());
 			}
