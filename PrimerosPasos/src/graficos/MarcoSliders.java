@@ -34,21 +34,53 @@ class Lamina_Sliders extends JPanel {
 	
 	public Lamina_Sliders() {
 		
-		JSlider control = new JSlider(0,100,50);
+		setLayout(new BorderLayout());
 		
-		control.setMajorTickSpacing(50);
+		rotulo = new JLabel("En un lugar de la Mancha de cuyo nombre...");
 		
-		control.setMinorTickSpacing(25);
+		add(rotulo, BorderLayout.CENTER);
+		
+		control = new JSlider(8,50,12);
+		
+		control.setMajorTickSpacing(20);
+		
+		control.setMinorTickSpacing(5);
 		
 		control.setPaintTicks(true);
 		
-		control.setFont(new Font("Serif", Font.ITALIC, 12));
-		
 		control.setPaintLabels(true);
 		
-		//control.setSnapToTicks(true);
+		control.setFont(new Font("Serif", Font.ITALIC, 10));
 		
-		add(control);
+		control.addChangeListener(new EventoSlider());
+		
+		JPanel laminaSlider = new JPanel();
+		
+		laminaSlider.add(control);
+		
+		add(laminaSlider, BorderLayout.NORTH);
 		
 	}
+	
+	private class EventoSlider implements ChangeListener {
+
+		@Override
+		public void stateChanged(ChangeEvent e) {
+			
+			//contador++;
+			
+			//System.out.println("Estás manipulando el deslizante: " + control.getValue());
+			
+			rotulo.setFont(new Font("Serif", Font.PLAIN, control.getValue()));
+			
+		}
+		
+		
+	}
+	
+	private JLabel rotulo;
+	
+	private JSlider control;
+	
+	private static int contador; 
 }
