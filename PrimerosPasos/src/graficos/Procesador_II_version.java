@@ -21,7 +21,7 @@ class MenuProcesador_II_v2 extends JFrame {
 	
 	public MenuProcesador_II_v2() {
 		
-		setBounds(500, 300, 550, 400);
+		setBounds(500, 300, 550, 420);
 		
 		LaminaProcesador_II_v2 milamina = new LaminaProcesador_II_v2();
 		
@@ -160,7 +160,7 @@ class LaminaProcesador_II_v2 extends JPanel {
 		
 		//---------------------------------------------------------------------------------------
 		
-		JToolBar barra = new JToolBar();
+		/*JToolBar barra = new JToolBar();
 		
 		JButton negritaBarra = new JButton(new ImageIcon("bin/graficos/imagen.png"));
 		
@@ -168,11 +168,39 @@ class LaminaProcesador_II_v2 extends JPanel {
 		
 		JButton subraBarra = new JButton(new ImageIcon("bin/graficos/imagen.png"));
 		
+		JButton azulBarra = new JButton(new ImageIcon("bin/graficos/imagen.png"));
+		
+		JButton amarilloBarra = new JButton(new ImageIcon("bin/graficos/imagen.png"));
+		
+		JButton rojoBarra = new JButton(new ImageIcon("bin/graficos/imagen.png"));
+		
+		JButton a_izquierda = new JButton(new ImageIcon("bin/graficos/imagen.png"));
+		
+		JButton a_centrado = new JButton(new ImageIcon("bin/graficos/imagen.png"));
+		
+		JButton a_derecha = new JButton(new ImageIcon("bin/graficos/imagen.png"));
+		
+		JButton a_justificado = new JButton(new ImageIcon("bin/graficos/imagen.png"));
+		
 		negritaBarra.addActionListener(new StyledEditorKit.BoldAction());
 		
 		cursivaBarra.addActionListener(new StyledEditorKit.ItalicAction());
 		
 		subraBarra.addActionListener(new StyledEditorKit.UnderlineAction());
+		
+		azulBarra.addActionListener(new StyledEditorKit.ForegroundAction("Pone_azul", Color.BLUE));
+		
+		amarilloBarra.addActionListener(new StyledEditorKit.ForegroundAction("Pone_amarillo", Color.YELLOW));
+		
+		rojoBarra.addActionListener(new StyledEditorKit.ForegroundAction("Pone_rojo", Color.RED));
+		
+		a_izquierda.addActionListener(new StyledEditorKit.AlignmentAction("Izquierda", 0));
+		
+		a_centrado.addActionListener(new StyledEditorKit.AlignmentAction("Centrado", 1));
+		
+		a_derecha.addActionListener(new StyledEditorKit.AlignmentAction("Derecha", 2));
+		
+		a_justificado.addActionListener(new StyledEditorKit.AlignmentAction("Justificado", 3));
 		
 		barra.add(negritaBarra);
 		
@@ -180,10 +208,59 @@ class LaminaProcesador_II_v2 extends JPanel {
 		
 		barra.add(subraBarra);
 		
+		barra.add(azulBarra);
+		
+		barra.add(amarilloBarra);
+		
+		barra.add(rojoBarra);
+		
+		barra.add(a_izquierda);
+		
+		barra.add(a_centrado);
+		
+		barra.add(a_derecha);
+		
+		barra.add(a_justificado);*/
+		
+		barra = new JToolBar();
+		
+		configura_barra("bin/graficos/imagen.png").addActionListener(new StyledEditorKit.BoldAction());
+		
+		configura_barra("bin/graficos/imagen.png").addActionListener(new StyledEditorKit.ItalicAction());
+		
+		configura_barra("bin/graficos/imagen.png").addActionListener(new StyledEditorKit.UnderlineAction());
+		
+		barra.addSeparator();
+		
+		configura_barra("bin/graficos/imagen.png").addActionListener(new StyledEditorKit.ForegroundAction("Pone_azul", Color.BLUE));
+		
+		configura_barra("bin/graficos/imagen.png").addActionListener(new StyledEditorKit.ForegroundAction("Pone_amarillo", Color.YELLOW));
+		
+		configura_barra("bin/graficos/imagen.png").addActionListener(new StyledEditorKit.ForegroundAction("Pone_rojo", Color.RED));
+		
+		barra.addSeparator();
+		
+		configura_barra("bin/graficos/imagen.png").addActionListener(new StyledEditorKit.AlignmentAction("Izquierda", 0));
+		
+		configura_barra("bin/graficos/imagen.png").addActionListener(new StyledEditorKit.AlignmentAction("Centrado", 1));
+		
+		configura_barra("bin/graficos/imagen.png").addActionListener(new StyledEditorKit.AlignmentAction("Derecha", 2));
+		
+		configura_barra("bin/graficos/imagen.png").addActionListener(new StyledEditorKit.AlignmentAction("Justificado", 3));
+		
 		barra.setOrientation(1);
 		
 		add(barra, BorderLayout.WEST);
 		
+	}
+	
+	public JButton configura_barra(String ruta) {
+		
+		JButton boton = new JButton(new ImageIcon(ruta));
+		
+		barra.add(boton);
+		
+		return boton;
 	}
 	
 	public void configura_menu(String rotulo, String menu, String tipo_letra,
@@ -242,4 +319,9 @@ class LaminaProcesador_II_v2 extends JPanel {
 	JMenu fuente, estilo, tamagno;
 	
 	Font letras;
+	
+	JButton negritaBarra, cursivaBarra, subraBarra, azulBarra, rojoBarra, amarilloBarra, a_izquierda, 
+		a_centrado, a_derecha, a_justificado;
+	
+	JToolBar barra;
 }
